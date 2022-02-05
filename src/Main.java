@@ -135,17 +135,22 @@ public class Main {
         return count;
     }
 
+    public static char determineFirstTurn(char[][] gameGrid) {
+        int xCount = countXo(gameGrid, X_CHAR);
+        int oCount = countXo(gameGrid, O_CHAR);
+        return xCount > oCount ? O_CHAR : X_CHAR;
+    }
+
     public static void main(String[] args) {
         gameInputString();
         gameGrid = stringToTwoDimensionalArray(input);
+        turn = determineFirstTurn(gameGrid);
         printGameGrid(gameGrid);
         boolean validCoordinateInput = false;
-        String errorMessage = "";
         int one = 1; // difference between coordinate and index
         int[] cellIndices = new int[2];
         do {
             boolean inputFormatValid = false;
-            int validInputs = 0;
             do { // check if input is two numbers
                 System.out.print(INPUT_ENTER_COORDINATES_STR);
                 inputFormatValid = false;
@@ -177,6 +182,6 @@ public class Main {
             }
         } while (!validCoordinateInput);
         printGameGrid(gameGrid);
-        checkGameOver(gameGrid,'X');
+        checkGameOver(gameGrid,turn);
     }
 }
