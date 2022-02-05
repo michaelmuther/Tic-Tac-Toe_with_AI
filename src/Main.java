@@ -32,7 +32,11 @@ public class Main {
         int inputIndex = 0;
         for (int i = 0; i < arrayRows; i++) {
             for (int j = 0; j < arrayColumns; j++) {
-                temp[i][j] = input.charAt(inputIndex);
+                if (input.charAt(inputIndex) != '_') {
+                    temp[i][j] = input.charAt(inputIndex);
+                } else {
+                    temp[i][j] = ' ';
+                }
                 inputIndex++;
             }
         }
@@ -105,7 +109,7 @@ public class Main {
         }
         for (int i = 0; i < gameGrid.length; i++) {
             for (int j = 0; j < gameGrid[i].length; j++) {
-                if (gameGrid[i][j] != '_') {
+                if (gameGrid[i][j] != ' ') {
                     turns++;
                 }
             }
