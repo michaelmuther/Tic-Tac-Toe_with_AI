@@ -105,7 +105,7 @@ public class Main {
         }
         for (int i = 0; i < gameGrid.length; i++) {
             for (int j = 0; j < gameGrid[i].length; j++) {
-                if (gameGrid[i][j] != ' ') {
+                if (gameGrid[i][j] != '_') {
                     turns++;
                 }
             }
@@ -145,19 +145,16 @@ public class Main {
             do { // check if input is two numbers
                 System.out.print(INPUT_ENTER_COORDINATES_STR);
                 inputFormatValid = false;
-                validInputs = 0;
                 String input1String = scanner.next();
-                String input2String = scanner.next();
                 if (isNumeric(input1String)) {
                     cellIndices[0] = Integer.parseInt(input1String) - one;
-                    validInputs++;
-                }
-                if (isNumeric(input2String)) {
-                    cellIndices[1] = Integer.parseInt(input2String) - one;
-                    validInputs++;
-                }
-                if (validInputs == 2) {
-                    inputFormatValid = true;
+                    String input2String = scanner.next();
+                    if (isNumeric(input2String)) {
+                        cellIndices[1] = Integer.parseInt(input2String) - one;
+                        inputFormatValid = true;
+                    } else {
+                        System.out.println(ERROR_INVALID_ENTRY_STR);
+                    }
                 } else {
                     System.out.println(ERROR_INVALID_ENTRY_STR);
                 }
